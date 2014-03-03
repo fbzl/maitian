@@ -878,7 +878,9 @@
     $('.cover').html('<img src="'+item.cover+'" alt="'+item.title+'">');
     $('.tag').html('<strong>'+item.title+'</strong><span class="artist">'+item.artist+'</span>');
     $('#playlist li').removeClass('playing').eq(i).addClass('playing');
-    $('body').scrollTo('li.playing', {duration: 1500});
+    if ($('#playlist li').eq(i).offset().top > 600) {
+      $('body').scrollTo('li.playing', {duration: 1500});
+    }
     audio = newaudio[0];
     audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
     audio.addEventListener('progress', beforeLoad, false);
