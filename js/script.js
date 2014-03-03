@@ -881,6 +881,7 @@
     if ($('#playlist li').eq(i).offset().top > 600) {
       $('body').scrollTo('li.playing', {duration: 1500});
     }
+    $('title').text(item.title + " - " + item.artist);
     audio = newaudio[0];
     audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
     audio.addEventListener('progress', beforeLoad, false);
