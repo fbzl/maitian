@@ -878,6 +878,7 @@
     $('.cover').html('<img src="'+item.cover+'" alt="'+item.title+'">');
     $('.tag').html('<strong>'+item.title+'</strong><span class="artist">'+item.artist+'</span>');
     $('#playlist li').removeClass('playing').eq(i).addClass('playing');
+    $('body').scrollTo('li.playing', {duration: 1500});
     audio = newaudio[0];
     audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
     audio.addEventListener('progress', beforeLoad, false);
@@ -944,4 +945,20 @@
       $(this).addClass('enable');
     }
   });
+  // 监听键盘事件
+  $(document).keydown(function(event){ 
+    if(event.keyCode == 37){ 
+      if (shuffle === 'true'){
+          shufflePlay();
+      } else {
+          switchTrack(--currentTrack);
+      }
+    } else if (event.keyCode == 39){ 
+      if (shuffle === 'true'){
+        shufflePlay();
+      } else {
+        switchTrack(++currentTrack);
+      }
+    } 
+  }); 
 })(jQuery);
